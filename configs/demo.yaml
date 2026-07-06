@@ -1,0 +1,57 @@
+# SpotActor — Single Case Configuration Example
+# Usage: python scripts/generate.py --config configs/demo.yaml
+#
+# This file defines a complete generation case (source + targets)
+# with all necessary parameters.
+
+# ==================== Subjects ====================
+# Support multi-subject
+subjects: ["cat"]
+central_prompt: "A ginger cat, digital painting"
+
+# ==================== Source ====================
+source:
+  scene: "running in park"
+  bbox:
+    - [0.21, 0.28, 0.6, 0.83]
+  seed: 2030
+
+# ==================== Targets ====================
+targets:
+  - scene: "sitting on meadow"
+    bbox:
+      - [0.55, 0.26, 0.88, 0.85]
+    seed: 2020
+
+# ==================== Model ====================
+model:
+  path: "stabilityai/stable-diffusion-xl-base-1.0"
+  dtype: "fp16"
+  variant: "fp16"
+
+# ==================== Generation ====================
+generation:
+  guidance_scale: 5.0
+  num_inference_steps: 30
+  negative_prompt: >-
+    deformed, mutation, abnormal, extra limbs, distorted,
+    unrealistic proportions, low quality, low definition
+
+# ==================== SpotActor Hyperparameters ====================
+# Each param can be a specific number (used as-is) or "auto" (dynamically computed).
+spotactor:
+  layout_guidance_steps: 1        # Denoising steps with backward layout optimization
+  consistent_guidance_steps: 20   # Steps with cross-batch consistency guidance
+  backward_iter_per_step: 30      # Max optimization iterations per backward step
+  scale_factor: auto              # Layout loss scaling factor
+  loss_thres: 0.15                # Early-stop threshold (lower = stricter layout)
+  semantic_rescale: auto          # Prompt embedding gradient scale
+
+  # Verbose logging for auto-adjusted parameters
+  adaptive_verbose: true
+
+# ==================== Output ====================
+output:
+  dir: "./output-demo"
+  draw_box: true
+  save_overview: true

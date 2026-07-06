@@ -1,0 +1,56 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Model weights (too large for git)
+*.safetensors
+*.bin
+*.ckpt
+*.pt
+*.pth
+model_zoo/
+
+# Outputs
+output/
+output-batch/
+out/
+out-*/
+*.jpg
+*.png
+!assets/*.png
+!assets/*.jpg
+
+# Logs
+*.log
+wandb/
+runs/
+
+# Misc
+*.zip
+*.tar.gz
