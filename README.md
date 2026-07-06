@@ -143,7 +143,7 @@ SpotActor uses a layered YAML configuration system:
 ### Config File Structure
 
 ```yaml
-# Case config example (configs/examples/cat_dog.yaml)
+# Case config example
 subjects: ["cat", "dog"]
 central_prompt: "A ginger cat and a brown dog, digital painting"
 
